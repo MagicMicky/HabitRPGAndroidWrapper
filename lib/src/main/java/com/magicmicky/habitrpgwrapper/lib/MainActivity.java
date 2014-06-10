@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.magicmicky.habitrpgwrapper.lib.api.ApiService;
+import com.magicmicky.habitrpgwrapper.lib.api.HabitRPGDataCallback;
 import com.magicmicky.habitrpgwrapper.lib.api.HabitRPGStatusCallback;
 
 import retrofit.RequestInterceptor;
@@ -23,7 +24,6 @@ public class MainActivity extends ActionBarActivity {
             public void intercept(RequestInterceptor.RequestFacade request) {
                 request.addHeader("x-api-key", "b89ef880-7e07-4d13-8a5f-b6be25437fd8");
                 request.addHeader("x-api-user","710f41f1-4113-4d8a-9714-79a84edd6175");
-                request.addHeader("Accept-Encoding", "gzip");
             }
         };
 
@@ -31,7 +31,7 @@ public class MainActivity extends ActionBarActivity {
 
         ApiService service  = adapter.create(ApiService.class);
         service.getStatus(new HabitRPGStatusCallback());
-        //service.getUser(new HabitRPGDataCallback());
+        service.getUser(new HabitRPGDataCallback());
 
     }
 
