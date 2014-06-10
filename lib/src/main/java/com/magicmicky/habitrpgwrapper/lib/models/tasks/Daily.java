@@ -5,7 +5,7 @@ package com.magicmicky.habitrpgwrapper.lib.models.tasks;
  * A daily item. It contains the item called "Daily" on the website
  * @author MagicMicky
  */
-public class Daily extends HabitItem{
+public class Daily extends Checklist{
 	private final static HabitType type=HabitType.daily;
 	private boolean completed;
 	private Days repeat;

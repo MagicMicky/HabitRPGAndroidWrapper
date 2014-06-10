@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by MagicMicky on 10/06/2014.
  */
-public class HabitRPGData {
+public class HabitRPGUser {
     private String id;
     private List<Daily> dailys;
     private List<ToDo> todos;

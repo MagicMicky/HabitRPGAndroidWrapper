@@ -98,26 +98,26 @@ public class Party {
         }
 
         private class Progress {
-            private int down, up;
+            private float down, up;
 
-            private Progress(int down, int up) {
+            private Progress(float down, float up) {
                 this.down = down;
                 this.up = up;
             }
 
-            public int getDown() {
+            public float getDown() {
                 return down;
             }
 
-            public void setDown(int down) {
+            public void setDown(float down) {
                 this.down = down;
             }
 
-            public int getUp() {
+            public float getUp() {
                 return up;
             }
 
-            public void setUp(int up) {
+            public void setUp(float up) {
                 this.up = up;
             }
         }

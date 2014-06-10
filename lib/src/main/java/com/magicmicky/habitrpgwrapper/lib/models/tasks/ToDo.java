@@ -7,7 +7,7 @@ package com.magicmicky.habitrpgwrapper.lib.models.tasks;
  * @author MagicMicky
  *
  */
-public class ToDo extends HabitItem{
+public class ToDo extends Checklist{
 	private final static HabitType type=HabitType.todo;
 	private boolean completed;
 	private String date;

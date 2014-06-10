@@ -17,7 +17,7 @@ public abstract class HabitItem {
 	private String text;
 	private double value;
 	private String attribute;
-	private List<String> tagsId;
+	private List<String> tags;
 	/**
 	 * Create a new HabitItem from what is necessary
 	 * @param id the id of the habit
