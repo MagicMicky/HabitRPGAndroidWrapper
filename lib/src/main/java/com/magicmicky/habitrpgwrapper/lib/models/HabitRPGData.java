@@ -1,11 +1,18 @@
 package com.magicmicky.habitrpgwrapper.lib.models;
 
+import com.magicmicky.habitrpgwrapper.lib.models.tasks.Daily;
+import com.magicmicky.habitrpgwrapper.lib.models.tasks.Habit;
+import com.magicmicky.habitrpgwrapper.lib.models.tasks.Reward;
+import com.magicmicky.habitrpgwrapper.lib.models.tasks.ToDo;
+
+import java.util.List;
+
 /**
  * Created by MagicMicky on 10/06/2014.
  */
 public class HabitRPGData {
     private String id;
-/*    private List<Daily> dailys;
+    private List<Daily> dailys;
     private List<ToDo> todos;
     private List<Reward> rewards;
     private List<Habit> habits;
@@ -15,20 +22,6 @@ public class HabitRPGData {
     private Profile profile;
     private Party party;
     private Items items;
-*/
-/*    public HabitRPGData(String id, List<Daily> dailys, List<ToDo> todos, List<Reward> rewards, List<Habit> habits, List<Tags> tags, Stats stats, Preferences preferences, Profile profile, Party party, Items items) {
-        this.id = id;
-        this.dailys = dailys;
-        this.todos = todos;
-        this.rewards = rewards;
-        this.habits = habits;
-        this.tags = tags;
-        this.stats = stats;
-        this.preferences = preferences;
-        this.profile = profile;
-        this.party = party;
-        this.items = items;
-    }
 
     public Preferences getPreferences() {
         return preferences;
@@ -37,7 +30,7 @@ public class HabitRPGData {
     public void setPreferences(Preferences preferences) {
         this.preferences = preferences;
     }
-*/
+
     public String getId() {
         return id;
     }
@@ -46,7 +39,7 @@ public class HabitRPGData {
         this.id = id;
     }
 
-/*    public List<Daily> getDailys() {
+    public List<Daily> getDailys() {
         return dailys;
     }
 
@@ -117,6 +110,6 @@ public class HabitRPGData {
     public void setItems(Items items) {
         this.items = items;
     }
-*/
+
 
 }

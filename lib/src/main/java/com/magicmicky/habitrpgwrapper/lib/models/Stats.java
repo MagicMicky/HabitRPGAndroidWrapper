@@ -3,9 +3,8 @@ package com.magicmicky.habitrpgwrapper.lib.models;
 /**
  * Created by MagicMicky on 16/03/14.
  */
-public class Stats {
+public class Stats extends BasicStats{
     private BasicStats training;//stats.training
-    private BasicStats basicStats;//stats.
     private Buffs buffs;//stats.buffs
     private int points, lvl;
     private HabitRpgClass _class;
@@ -13,25 +12,6 @@ public class Stats {
     private int toNextLevel;//xp needed to be earned
     private int maxHealth, maxMP;
 
-    public Stats() {
-        this(null,null,null, 0,0,null,0.0,0.0,0.0,0.0,0,0,0);
-    }
-
-    public Stats(BasicStats training, BasicStats basicStats, Buffs buffs, int points, int lvl, HabitRpgClass _class, Double gp, Double exp, Double mp, Double hp, int toNextLevel, int maxHealth, int maxMP) {
-        this.training = training;
-        this.basicStats = basicStats;
-        this.buffs = buffs;
-        this.points = points;
-        this.lvl = lvl;
-        this._class = _class;
-        this.gp = gp;
-        this.exp = exp;
-        this.mp = mp;
-        this.hp = hp;
-        this.toNextLevel = toNextLevel;
-        this.maxHealth = maxHealth;
-        this.maxMP = maxMP;
-    }
 
     public BasicStats getTraining() {
         return training;
@@ -39,14 +19,6 @@ public class Stats {
 
     public void setTraining(BasicStats training) {
         this.training = training;
-    }
-
-    public BasicStats getBasicStats() {
-        return basicStats;
-    }
-
-    public void setBasicStats(BasicStats basicStats) {
-        this.basicStats = basicStats;
     }
 
     public Buffs getBuffs() {
@@ -137,76 +109,30 @@ public class Stats {
         this.maxMP = maxMP;
     }
 
-    private class BasicStats {
-        private int con, str, per, _int;
-
-        private BasicStats() {
-            this(0,0,0,0);
-        }
-        private BasicStats(int con, int str, int per, int _int) {
-            this.con = con;
-            this.str = str;
-            this.per = per;
-            this._int = _int;
-        }
-
-        public int getCon() {
-            return con;
-        }
-
-        public void setCon(int con) {
-            this.con = con;
-        }
-
-        public int getStr() {
-            return str;
-        }
-
-        public void setStr(int str) {
-            this.str = str;
-        }
-
-        public int getPer() {
-            return per;
-        }
-
-        public void setPer(int per) {
-            this.per = per;
-        }
-
-        public int get_int() {
-            return _int;
-        }
-
-        public void set_int(int _int) {
-            this._int = _int;
-        }
-    }
     private class Buffs extends BasicStats {
-        private int snowball;
-        private int streaks;
+        private boolean snowball;
+        private boolean streaks;
         private Buffs() {
-            this(0,0);
+            this(false,false);
         }
-        private Buffs(int snowball, int streaks) {
-            super();
+        private Buffs(boolean snowball, boolean streaks) {
             this.snowball = snowball;
             this.streaks = streaks;
         }
 
-        public int getSnowball() {
+        public boolean getSnowball() {
             return snowball;
         }
 
-        public void setSnowball(int snowball) {
+        public void setSnowball(boolean snowball) {
             this.snowball = snowball;
         }
 
-        public int getStreaks() {
+        public boolean getStreaks() {
             return streaks;
         }
 
-        public void setStreaks(int streaks) {
+        public void setStreaks(boolean streaks) {
             this.streaks = streaks;
         }
     }

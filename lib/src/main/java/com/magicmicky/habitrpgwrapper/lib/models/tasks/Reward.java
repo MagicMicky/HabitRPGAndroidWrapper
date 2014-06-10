@@ -16,7 +16,7 @@ public class Reward extends HabitItem{
 	 * @param text the text of the habit
 	 * @param value the value (points) of the habit
 	 */
-	public Reward(String id, String notes, Integer priority, String text,
+	public Reward(String id, String notes, Float priority, String text,
 			double value) {
 		super(id, notes, priority, text, value);
 	}

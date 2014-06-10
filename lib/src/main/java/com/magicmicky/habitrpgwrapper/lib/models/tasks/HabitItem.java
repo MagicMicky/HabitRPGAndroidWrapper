@@ -13,7 +13,7 @@ import java.util.List;
 public abstract class HabitItem {
 	private String id;
 	private String notes;
-	private Integer priority;
+	private Float priority;
 	private String text;
 	private double value;
 	private String attribute;
@@ -26,7 +26,7 @@ public abstract class HabitItem {
 	 * @param text the text of the habit
 	 * @param value the value (points) of the habit
 	 */
-	public HabitItem(String id, String notes, Integer priority, String text, double value) {
+	public HabitItem(String id, String notes, Float priority, String text, double value) {
 		this.setId(id);
 		this.setNotes(notes);
 		this.setPriority(priority);
@@ -36,7 +36,7 @@ public abstract class HabitItem {
 
 	}
 	public HabitItem() {
-		this("","",1,"",0);
+		this("","",1f,"",0);
 	}
 	/**
 	 * @return the id
@@ -65,13 +65,13 @@ public abstract class HabitItem {
 	/**
 	 * @return the priority
 	 */
-	public Integer getPriority() {
+	public Float getPriority() {
 		return priority;
 	}
 	/**
 	 * @param i the priority to set
 	 */
-	public void setPriority(Integer i) {
+	public void setPriority(Float i) {
 		this.priority = i;
 	}
 	/**

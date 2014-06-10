@@ -21,18 +21,18 @@ public class Daily extends HabitItem{
 	 * @param completed whether or not the daily is completed
 	 * @param repeat when does it repeat?
 	 */
-	public Daily(String id, String notes, Integer priority, String text,
+	public Daily(String id, String notes, Float priority, String text,
 			double value, boolean completed, Days repeat) {
 		super(id, notes, priority, text, value);
 		this.setCompleted(completed);
 		this.setRepeat(repeat);
 	}
-	public Daily(String id, String notes, Integer priority, String text,
+	public Daily(String id, String notes, Float priority, String text,
 			double value, boolean completed, Days repeat, String lastCompleted) {
 		this(id, notes, priority, text, value,completed,repeat);
 		//this.setLastCompleted(lastCompleted);
 	}
-	public Daily(String id, String notes, Integer priority, String text,
+	public Daily(String id, String notes, Float priority, String text,
 			double value, boolean completed, Days repeat, int streak, String lastCompleted) {
 		this(id, notes, priority, text, value,completed,repeat,lastCompleted);
 		this.setStreak(streak);
