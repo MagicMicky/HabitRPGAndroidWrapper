@@ -6,15 +6,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.magicmicky.habitrpgwrapper.lib.api.ApiService;
+import com.magicmicky.habitrpgwrapper.lib.api.HabitRPGStatusCallback;
 
-import org.apache.http.client.protocol.RequestDefaultHeaders;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import retrofit.RequestHeaders;
+import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
-import retrofit.client.Header;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -23,20 +18,20 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        RequestHeaders headers = new RequestHeaders() {
+        RequestInterceptor requestInterceptor = new RequestInterceptor() {
             @Override
-            public List<Header> get() {
-                List<Header> h = new ArrayList<Header>();
-                h.add(new Header("x-api-key", "b89ef880-7e07-4d13-8a5f-b6be25437fd8"));
-                h.add(new Header("x-api-user","710f41f1-4113-4d8a-9714-79a84edd6175"));
-                h.add(new Header("Accept-Encoding", "gzip"));
-                return h;
+            public void intercept(RequestInterceptor.RequestFacade request) {
+                request.addHeader("x-api-key", "b89ef880-7e07-4d13-8a5f-b6be25437fd8");
+                request.addHeader("x-api-user","710f41f1-4113-4d8a-9714-79a84edd6175");
+                request.addHeader("Accept-Encoding", "gzip");
             }
         };
-        RestAdapter adapter = new RestAdapter.Builder().setServer("https://habitrpg.com/api/v2/").setRequestHeaders(headers).build();
+
+        RestAdapter adapter = new RestAdapter.Builder().setEndpoint("https://habitrpg.com:443/api/v2/").setRequestInterceptor(requestInterceptor).build();
 
         ApiService service  = adapter.create(ApiService.class);
+        service.getStatus(new HabitRPGStatusCallback());
+        //service.getUser(new HabitRPGDataCallback());
 
     }
 
