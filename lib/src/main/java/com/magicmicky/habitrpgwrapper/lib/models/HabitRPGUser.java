@@ -16,7 +16,7 @@ public class HabitRPGUser {
     private List<ToDo> todos;
     private List<Reward> rewards;
     private List<Habit> habits;
-    private List<Tags> tags;
+    private List<Tag> tags;
     private Stats stats;
     private Preferences preferences;
     private Profile profile;
@@ -71,11 +71,11 @@ public class HabitRPGUser {
         this.habits = habits;
     }
 
-    public List<Tags> getTags() {
+    public List<Tag> getTags() {
         return tags;
     }
 
-    public void setTags(List<Tags> tags) {
+    public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
 

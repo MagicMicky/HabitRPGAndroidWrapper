@@ -11,7 +11,7 @@ import retrofit.client.Response;
 /**
  * Created by MagicMicky on 10/06/2014.
  */
-public class HabitRPGStatusCallback implements Callback<Status> {
+public class StatusCallback implements Callback<Status> {
     private static final String TAG = "Status";
 
     @Override

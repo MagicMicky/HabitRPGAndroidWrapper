@@ -6,8 +6,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.magicmicky.habitrpgwrapper.lib.api.ApiService;
-import com.magicmicky.habitrpgwrapper.lib.api.HabitRPGDataCallback;
-import com.magicmicky.habitrpgwrapper.lib.api.HabitRPGStatusCallback;
+import com.magicmicky.habitrpgwrapper.lib.api.StatusCallback;
+import com.magicmicky.habitrpgwrapper.lib.api.UserCallback;
 
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
@@ -30,8 +30,8 @@ public class MainActivity extends ActionBarActivity {
         RestAdapter adapter = new RestAdapter.Builder().setEndpoint("https://habitrpg.com:443/api/v2/").setRequestInterceptor(requestInterceptor).build();
 
         ApiService service  = adapter.create(ApiService.class);
-        service.getStatus(new HabitRPGStatusCallback());
-        service.getUser(new HabitRPGDataCallback());
+        service.getStatus(new StatusCallback());
+        service.getUser(new UserCallback());
 
     }
 

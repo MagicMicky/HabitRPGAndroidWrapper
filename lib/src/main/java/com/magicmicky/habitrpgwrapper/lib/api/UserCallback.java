@@ -12,7 +12,7 @@ import retrofit.client.Response;
 /**
  * Created by MagicMicky on 10/06/2014.
  */
-public class HabitRPGDataCallback implements Callback<HabitRPGUser> {
+public class UserCallback implements Callback<HabitRPGUser> {
     private final String TAG = "HabitRPGDataCallback";
     private static final int BUFFER_SIZE = 0x1000;
 
