@@ -2,7 +2,11 @@ package com.magicmicky.habitrpgwrapper.lib.api;
 
 import com.magicmicky.habitrpgwrapper.lib.models.HabitRPGUser;
 import com.magicmicky.habitrpgwrapper.lib.models.Status;
+import com.magicmicky.habitrpgwrapper.lib.models.tasks.Daily;
+import com.magicmicky.habitrpgwrapper.lib.models.tasks.Habit;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.HabitItem;
+import com.magicmicky.habitrpgwrapper.lib.models.tasks.Reward;
+import com.magicmicky.habitrpgwrapper.lib.models.tasks.ToDo;
 
 import retrofit.Callback;
 import retrofit.http.Body;
@@ -25,25 +29,42 @@ public interface ApiService {
     @POST("/user/revive")
     void revive(Callback<HabitRPGUser> habitRPGUserCallback);
 
-    //TODO:
-    @GET("/user/tasks/{id}")
-    void getTask(@Path("id") String id, Callback<HabitItemCallback> habitItemCallback);
+    @POST("/user/tasks/{id}/{direction}")
+    void postTaskDirection(@Path("id") String id, @Path("direction") String direction, TaskDirectionCallback taskDirectionCallback);//+ weird callback with delta etc.
+
+    @POST("/user/tasks")
+    void createItem(@Body Habit item, Callback<Habit> habitItemCallback);
+
+    @POST("/user/tasks")
+    void createItem(@Body Daily item, Callback<Daily> habitItemCallback);
+
+    @POST("/user/tasks")
+    void createItem(@Body ToDo item, Callback<ToDo> habitItemCallback);
+
+    @POST("/user/tasks")
+    void createItem(@Body Reward item, Callback<Reward> habitItemCallback);
+
+    @PUT("/user/tasks/{id}")
+    void updateTask(@Path("id") String id, @Body Habit item, Callback<Habit> habitItemCallback);
+
+    @PUT("/user/tasks/{id}")
+    void updateTask(@Path("id") String id, @Body Daily item, Callback<Daily> habitItemCallback);
+
+    @PUT("/user/tasks/{id}")
+    void updateTask(@Path("id") String id, @Body ToDo item, Callback<ToDo> habitItemCallback);
+
+    @PUT("/user/tasks/{id}")
+    void updateTask(@Path("id") String id, @Body Reward item, Callback<Reward> habitItemCallback);
+
+    @DELETE("/user/tasks/{id}")
+    void deleteTask(@Path("id") String id, Callback<HabitItemCallback> habitItemCallback);//test callback
 
 /*
     @GET("/content")
     void getContent();//Check Callback
 
-    @POST("/user/tasks/{id}/{direction}")
-    void postTaskDirection(@Path("id") String id, @Path("direction") String direction);//+ weird callback with delta etc.
 
-    @POST("/user/tasks")
-    void createTask(@Body HabitItem item, Callback<HabitItemCallback> habitItemCallbackCallback)
 
-    @PUT("/user/tasks/{id}")
-    void updateTask(@Path("id") String id, @Body HabitItem item, Callback<HabitItemCallback> habitItemCallbackCallback);
-
-    @DELETE("/user/tasks/{id}")
-    void deleteTask(@Path("id") String id, Callback<HabitItemCallback> habitItemCallbackCallback);//test callback
 
     @POST("/user/sleep")
     void sleep(Callback<HabitRPGDataCallback> habitRPGDataCallbackCallback);//Check callback.
@@ -74,5 +95,9 @@ public interface ApiService {
 
     @DELETE("/user/tags/{id}")
     void deleteTag(@Path("id") String id);//Callback
+
+
+    @GET("/user/tasks/{id}")
+    void getTask(@Path("id") String id, Callback<HabitItemCallback> habitItemCallback);
 */
 }

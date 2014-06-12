@@ -7,10 +7,10 @@ public abstract class Checklist extends HabitItem{
 	final private List<ChecklistItem> checklist;
 
     public Checklist() {
-        this("","",null,"",0f);
+        this(null,null,null,null,null);
     }
 
-    public Checklist(String id, String notes, Float priority, String text, double value) {
+    public Checklist(String id, String notes, Float priority, String text, Double value) {
 	        super(id, notes, priority, text, value);
 			this.checklist = new ArrayList<ChecklistItem>();
 	}

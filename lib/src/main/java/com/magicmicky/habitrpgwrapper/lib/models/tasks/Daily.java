@@ -6,11 +6,11 @@ package com.magicmicky.habitrpgwrapper.lib.models.tasks;
  * @author MagicMicky
  */
 public class Daily extends Checklist{
-	private final static HabitType type=HabitType.daily;
-	private boolean completed;
+	private final HabitType type=HabitType.daily;
+	private Boolean completed;
 	private Days repeat;
 	//TODO: private String lastCompleted;
-	private int streak;
+	private Integer streak;
 	/**
 	 * Construct a daily based on all the information needed
 	 * @param id the id of the daily
@@ -20,27 +20,25 @@ public class Daily extends Checklist{
 	 * @param value the value (points) of the daily
 	 * @param completed whether or not the daily is completed
 	 * @param repeat when does it repeat?
+     * @param streak the streak
+     * @param lastCompleted when was the last time it was completed?
 	 */
+    public Daily(String id, String notes, Float priority, String text,
+                 Double value, Boolean completed, Days repeat, Integer streak, String lastCompleted) {
+        //this(id, notes, priority, text, value,completed,repeat,lastCompleted);
+        super(id,notes,priority,text,value);
+        this.setCompleted(completed);
+        this.setRepeat(repeat);
+        this.setStreak(streak);
+        //this.setLastCompleted(lastCompleted);
+    }
 	public Daily(String id, String notes, Float priority, String text,
-			double value, boolean completed, Days repeat) {
-		super(id, notes, priority, text, value);
-		this.setCompleted(completed);
-		this.setRepeat(repeat);
+			Double value, Boolean completed, Days repeat) {
+		this(id, notes, priority, text, value,completed,repeat,null,null);
 	}
-	public Daily(String id, String notes, Float priority, String text,
-			double value, boolean completed, Days repeat, String lastCompleted) {
-		this(id, notes, priority, text, value,completed,repeat);
-		//this.setLastCompleted(lastCompleted);
-	}
-	public Daily(String id, String notes, Float priority, String text,
-			double value, boolean completed, Days repeat, int streak, String lastCompleted) {
-		this(id, notes, priority, text, value,completed,repeat,lastCompleted);
-		this.setStreak(streak);
-	}
+
 	public Daily() {
-		super();
-		this.setCompleted(false);
-		this.setRepeat(new Days());
+		this(null,null,null,null,null,null,null);
 	}
 	/**
 	 * @return if the daily is completed
@@ -52,7 +50,7 @@ public class Daily extends Checklist{
 	 *  Set whether or not the daily is completed
 	 * @param completed
 	 */
-	public void setCompleted(boolean completed) {
+	public void setCompleted(Boolean completed) {
 		this.completed = completed;
 	}
 	/**
@@ -69,26 +67,8 @@ public class Daily extends Checklist{
 		this.repeat = repeat;
 	}
 	@Override
-	protected String getType() {
-		return type.toString();
-	}
-	@Override
-	public String getJSONString() {
-		StringBuilder json = new StringBuilder()
-		.append("{")
-			.append(super.getJSONBaseString());
-			if(this.getRepeat() != null) {
-				json.append("\"repeat\":{");
-				for(int i=0;i<7;i++) {
-				//TODO:	json.append("\"").append(Daily.days[i]).append("\": ").append(this.getRepeat()[i]).append(",");
-				}
-				json =json.deleteCharAt(json.length()-1);
-				json.append("},");
-			}
-			json.append("\"streak\":").append(this.getStreak()).append(",");
-			json.append("\"completed\":" + (this.isCompleted() ? "true":"false"))
-		.append("}");
-		return json.toString();
+	protected HabitType getType() {
+		return type;
 	}
 	/**
 	 * Formated: 
@@ -113,13 +93,13 @@ public class Daily extends Checklist{
 	/**
 	 * @param streak the streak to set
 	 */
-	public void setStreak(int streak) {
+	public void setStreak(Integer streak) {
 		this.streak = streak;
 	}
 
-    private class Days {
+    public static class Days {
         private boolean m, t,w, th,f,s,su;
-        private Days() {
+        public Days() {
             this.m=false;
             this.t=false;
             this.w=false;
