@@ -28,3 +28,4 @@ Just check the interface examples in `com.magicmicky.habitrpgwrapper.lib.api`.
 I'm going to deliver a proper interface, so that you can work out of it and not use retrofit's interface directly.
 
 Enjoy :)
+ 
