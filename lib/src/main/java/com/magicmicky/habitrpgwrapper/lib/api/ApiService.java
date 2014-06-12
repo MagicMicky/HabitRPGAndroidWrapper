@@ -66,7 +66,7 @@ public interface ApiService {
     void createTag(@Body Tag tag, Callback<List<Tag>> multiTagCallback);//Check Callback
 
     @PUT("/user/tags/{id}")
-    void updateTag(@Path("id") String id, @Body Tag tag, Callback<List<Tag>> multiTagCallback);//callback
+    void updateTag(@Path("id") String id, @Body Tag tag, Callback<Tag> multiTagCallback);//callback
 
     @DELETE("/user/tags/{id}")
     void deleteTag(@Path("id") String id, Callback<Void> voidCallback);//Callback
