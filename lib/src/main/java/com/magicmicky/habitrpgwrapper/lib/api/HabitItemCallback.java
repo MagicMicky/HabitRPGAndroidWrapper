@@ -3,6 +3,7 @@ package com.magicmicky.habitrpgwrapper.lib.api;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.magicmicky.habitrpgwrapper.lib.models.tasks.Checklist;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.Daily;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.Habit;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.HabitItem;
@@ -30,11 +31,13 @@ public class HabitItemCallback<T extends HabitItem> implements Callback<T> {
             Log.d(TAG, "habit");
         } else if(habitItem instanceof Daily) {
             Log.d(TAG, "daily");
+            ((Daily) habitItem).addItem(new Checklist.ChecklistItem("OMG"));
         } else if(habitItem instanceof Reward) {
             Log.d(TAG, "reward");
         } else {
             Log.d(TAG, "Unknown");
         }
+
         Log.d(TAG +"_ans", new Gson().toJson(habitItem));
 
     }

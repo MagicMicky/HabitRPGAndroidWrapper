@@ -29,33 +29,43 @@ public interface ApiService {
     @GET("/user/")
     void getUser(Callback<HabitRPGUser> habitRPGUserCallback);
 
+
+
     @POST("/user/revive")
     void revive(Callback<HabitRPGUser> habitRPGUserCallback);
+
+    @GET("/user/tasks/")
+    void getTasks(Callback<HabitItemCallback> habitItemCallback);
+
+
+    @GET("/user/tasks/{id}")
+    void getHabit(@Path("id") String id, Callback<Habit> habitItemCallback);
+    @GET("/user/tasks/{id}")
+    void getDaily(@Path("id") String id, Callback<Daily> habitItemCallback);
+    @GET("/user/tasks/{id}")
+    void getToDo(@Path("id") String id, Callback<ToDo> habitItemCallback);
+    @GET("/user/tasks/{id}")
+    void getReward(@Path("id") String id, Callback<Reward> habitItemCallback);
+
 
     @POST("/user/tasks/{id}/{direction}")
     void postTaskDirection(@Path("id") String id, @Path("direction") String direction, TaskDirectionCallback taskDirectionCallback);//+ weird callback with delta etc.
 
     @POST("/user/tasks")
     void createItem(@Body Habit item, Callback<Habit> habitItemCallback);
-
     @POST("/user/tasks")
     void createItem(@Body Daily item, Callback<Daily> habitItemCallback);
-
     @POST("/user/tasks")
     void createItem(@Body ToDo item, Callback<ToDo> habitItemCallback);
-
     @POST("/user/tasks")
     void createItem(@Body Reward item, Callback<Reward> habitItemCallback);
 
     @PUT("/user/tasks/{id}")
     void updateTask(@Path("id") String id, @Body Habit item, Callback<Habit> habitItemCallback);
-
     @PUT("/user/tasks/{id}")
     void updateTask(@Path("id") String id, @Body Daily item, Callback<Daily> habitItemCallback);
-
     @PUT("/user/tasks/{id}")
     void updateTask(@Path("id") String id, @Body ToDo item, Callback<ToDo> habitItemCallback);
-
     @PUT("/user/tasks/{id}")
     void updateTask(@Path("id") String id, @Body Reward item, Callback<Reward> habitItemCallback);
 
@@ -99,7 +109,5 @@ public interface ApiService {
 
 
 
-    @GET("/user/tasks/{id}")
-    void getTask(@Path("id") String id, Callback<HabitItemCallback> habitItemCallback);
 */
 }

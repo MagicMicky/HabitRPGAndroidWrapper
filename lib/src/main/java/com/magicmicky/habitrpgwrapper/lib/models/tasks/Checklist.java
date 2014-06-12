@@ -55,20 +55,23 @@ public abstract class Checklist extends HabitItem{
 	
 
 public static class ChecklistItem {
+    private String id;
 	private String text;
-	private String id;
 	private boolean completed;
 	public ChecklistItem() {
 		this(null,null);
 	}
 	public ChecklistItem(String id, String text) {
-		this(text,id,false);
+		this(id,text,false);
 	}
 	public ChecklistItem(String id,String text, boolean completed) {
 		this.setText(text);
 		this.setId(id);
 		this.setCompleted(completed);
 	}
+    public ChecklistItem(String s) {
+        this(null,s);
+    }
 	public ChecklistItem(ChecklistItem item) {
 		this.text = item.getText();
 		this.id= item.getId();
