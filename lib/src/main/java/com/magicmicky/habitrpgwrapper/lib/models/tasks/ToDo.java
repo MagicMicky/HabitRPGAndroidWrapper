@@ -7,9 +7,9 @@ package com.magicmicky.habitrpgwrapper.lib.models.tasks;
  * @author MagicMicky
  *
  */
-public class ToDo extends HabitItem{
-	private final static HabitType type=HabitType.todo;
-	private boolean completed;
+public class ToDo extends Checklist{
+	private final HabitType type=HabitType.todo;
+	private Boolean completed;
 	private String date;
 	/**
 	 * Construct a daily based on all the information needed
@@ -30,7 +30,7 @@ public class ToDo extends HabitItem{
 
 	public ToDo() {
 		super();
-		this.setCompleted(false);
+		this.setCompleted(null);
 		this.setDate(null);
 	}
 
@@ -45,7 +45,7 @@ public class ToDo extends HabitItem{
 	 *  Set whether or not the todo is completed
 	 * @param completed
 	 */
-	public void setCompleted(boolean completed) {
+	public void setCompleted(Boolean completed) {
 		this.completed = completed;
 	}
 
@@ -65,20 +65,9 @@ public class ToDo extends HabitItem{
 	}
 
 	@Override
-	protected String getType() {
-		return type.toString();
+	protected HabitType getType() {
+		return type;
 	}
 
-	@Override
-	public String getJSONString() {
-		StringBuilder json = new StringBuilder()
-		.append("{")
-			.append(super.getJSONBaseString());
-			if(this.getDate()!=null && this.getDate()!="")
-				json.append("\"date\":\"").append(this.getDate()).append("\",");
-			json.append("\"completed\":").append((this.isCompleted() ? "true":"false"))
-		.append("}" );
-		return json.toString();
-	}
 
 }

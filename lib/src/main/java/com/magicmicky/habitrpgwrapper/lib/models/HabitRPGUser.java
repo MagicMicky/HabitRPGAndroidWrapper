@@ -10,13 +10,13 @@ import java.util.List;
 /**
  * Created by MagicMicky on 10/06/2014.
  */
-public class HabitRPGData {
+public class HabitRPGUser {
     private String id;
     private List<Daily> dailys;
     private List<ToDo> todos;
     private List<Reward> rewards;
     private List<Habit> habits;
-    private List<Tags> tags;
+    private List<Tag> tags;
     private Stats stats;
     private Preferences preferences;
     private Profile profile;
@@ -71,11 +71,11 @@ public class HabitRPGData {
         this.habits = habits;
     }
 
-    public List<Tags> getTags() {
+    public List<Tag> getTags() {
         return tags;
     }
 
-    public void setTags(List<Tags> tags) {
+    public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
 

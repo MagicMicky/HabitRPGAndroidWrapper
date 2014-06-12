@@ -7,9 +7,9 @@ package com.magicmicky.habitrpgwrapper.lib.models.tasks;
  *
  */
 public class Habit extends HabitItem{
-	private final static HabitType type = HabitType.habit;
-	private boolean up;
-	private boolean down;
+	private final HabitType type = HabitType.habit;
+	private Boolean up;
+	private Boolean down;
 	/**
 	 * Create a new Habit based on all the information needed
 	 * @param id the id of the habit
@@ -21,15 +21,15 @@ public class Habit extends HabitItem{
 	 * @param down whether or not the habit can be "downed"
 	 */
 	public Habit(String id, String notes, Float priority, String text, double value
-			, boolean up, boolean down) {
+			, Boolean up, Boolean down) {
 		super(id, notes, priority, text, value);
 		this.setUp(up);
 		this.setDown(down);
 	}
 	public Habit() {
 		super();
-		this.setDown(true);
-		this.setUp(true);
+		this.setDown(null);
+		this.setUp(null);
 	}
 	/**
 	 * @return whether or not the habit can be "upped"
@@ -41,7 +41,7 @@ public class Habit extends HabitItem{
 	 * Set the Up value
 	 * @param up
 	 */
-	public void setUp(boolean up) {
+	public void setUp(Boolean up) {
 		this.up = up;
 	}
 	/**
@@ -54,21 +54,12 @@ public class Habit extends HabitItem{
 	 * Set the Down value
 	 * @param down 
 	 */
-	public void setDown(boolean down) {
+	public void setDown(Boolean down) {
 		this.down = down;
 	}
-	public String getJSONString() {
-		StringBuilder json = new StringBuilder()
-		.append("{")
-			.append(super.getJSONBaseString())
-			.append("\"up\":").append((this.isUp() ? "true":"false")).append(",")
-			.append("\"down\":").append((this.isDown() ? "true":"false"))
-		.append("}");
-		return json.toString();
-	}
 	@Override
-	protected String getType() {
-		return type.toString();
+	protected HabitType getType() {
+		return type;
 	}
 
 }

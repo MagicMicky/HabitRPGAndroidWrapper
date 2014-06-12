@@ -7,7 +7,7 @@ package com.magicmicky.habitrpgwrapper.lib.models.tasks;
  *
  */
 public class Reward extends HabitItem{
-	private final static HabitType type = HabitType.reward;
+	private final HabitType type = HabitType.reward;
 	/**
 	 * Create a new Reward
 	 * @param id the id of the habit
@@ -26,22 +26,10 @@ public class Reward extends HabitItem{
 	}
 
 	@Override
-	protected String getType() {
-		return type.toString();
+	protected HabitType getType() {
+		return type;
 	}
 
-	@Override
-	public String getJSONString() {
-			StringBuilder json = new StringBuilder()
-			.append("{")
-				.append(super.getJSONBaseString());
-			if(json.charAt(json.length()-1) ==',') {
-				json.deleteCharAt(json.length()-1);
-			}
-			json.append("}");
-			System.out.println(json.toString());
-			return json.toString();
-	}
 	public static class SpecialReward extends Reward {
 		private static SpecialReward[] weapons= {
 			    new SpecialReward(0, "Training Sword","weapon_0","Training weapon.",0,0),
@@ -147,9 +135,6 @@ public class Reward extends HabitItem{
 		}
 		public int getLevel() {
 			return level;
-		}
-		public String getType() {
-			return type;
 		}
 	}
 }

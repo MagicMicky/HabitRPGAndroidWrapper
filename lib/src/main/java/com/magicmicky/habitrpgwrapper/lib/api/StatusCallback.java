@@ -9,9 +9,10 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 /**
+ * Simple Status callback implementation.
  * Created by MagicMicky on 10/06/2014.
  */
-public class HabitRPGStatusCallback implements Callback<Status> {
+public class StatusCallback implements Callback<Status> {
     private static final String TAG = "Status";
 
     @Override

@@ -3,31 +3,24 @@ package com.magicmicky.habitrpgwrapper.lib.api;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.magicmicky.habitrpgwrapper.lib.models.HabitRPGData;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.concurrent.Executor;
+import com.magicmicky.habitrpgwrapper.lib.models.HabitRPGUser;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
-import retrofit.mime.MimeUtil;
-import retrofit.mime.TypedByteArray;
-import retrofit.mime.TypedInput;
 
 /**
+ * Simple implementation of a user callback.
  * Created by MagicMicky on 10/06/2014.
  */
-public class HabitRPGDataCallback implements Callback<HabitRPGData> {
+public class UserCallback implements Callback<HabitRPGUser> {
     private final String TAG = "HabitRPGDataCallback";
     private static final int BUFFER_SIZE = 0x1000;
 
     @Override
-    public void success(HabitRPGData habitRPGDataCallback, Response response) {
-        Log.d(TAG, "Success ! " + habitRPGDataCallback.getId());
-        longInfo(new Gson().toJson(habitRPGDataCallback));
+    public void success(HabitRPGUser habitRPGUserCallback, Response response) {
+        Log.d(TAG, "Success ! " + habitRPGUserCallback.getId());
+        longInfo(new Gson().toJson(habitRPGUserCallback));
     }
 
     @Override

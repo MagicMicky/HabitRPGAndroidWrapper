@@ -1,10 +1,14 @@
 package com.magicmicky.habitrpgwrapper.lib.models;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by MagicMicky on 10/06/2014.
  */
 public class BasicStats {
-    private float con, str, per, _int;
+    private float con, str, per;
+    @SerializedName("int")
+    private float _int;
 
     public BasicStats() {
         this(0,0,0,0);

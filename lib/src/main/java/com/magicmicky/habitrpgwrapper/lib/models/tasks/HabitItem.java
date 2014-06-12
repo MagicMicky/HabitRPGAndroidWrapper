@@ -11,11 +11,11 @@ import java.util.List;
  *
  */
 public abstract class HabitItem {
-	private String id;
+    private String _id;
 	private String notes;
 	private Float priority;
 	private String text;
-	private double value;
+	private Double value;
 	private String attribute;
 	private List<String> tagsId;
 	/**
@@ -26,29 +26,30 @@ public abstract class HabitItem {
 	 * @param text the text of the habit
 	 * @param value the value (points) of the habit
 	 */
-	public HabitItem(String id, String notes, Float priority, String text, double value) {
+	public HabitItem(String id, String notes, Float priority, String text, Double value) {
 		this.setId(id);
 		this.setNotes(notes);
 		this.setPriority(priority);
 		this.setText(text);
 		this.setValue(value);
 		this.tagsId=new ArrayList<String>();
+        this._id = id;
 
 	}
 	public HabitItem() {
-		this("","",1f,"",0);
+		this(null,null,null,null,null);
 	}
 	/**
 	 * @return the id
 	 */
 	public String getId() {
-		return id;
+		return _id;
 	}
 	/**
 	 * @param id the id to set
 	 */
 	public void setId(String id) {
-		this.id = id;
+		this._id = id;
 	}
 	/**
 	 * @return the notes
@@ -95,9 +96,17 @@ public abstract class HabitItem {
 	/**
 	 * @param value the value to set
 	 */
-	public void setValue(double value) {
+	public void setValue(Double value) {
 		this.value = value;
 	}
+
+    /**
+     * To be allowed to set int value without problems
+     * @param value the value to set
+     */
+    public void setValue(double value) {
+        this.setValue(Double.valueOf(value));
+    }
 	
 	/**
 	 * @return the tagsId
@@ -125,12 +134,7 @@ public abstract class HabitItem {
 	 * Returns a string of the type of the HabitItem
 	 * @return the string of the Item type
 	 */
-	protected abstract String getType();
-	/**
-	 * Returns a JSONString of the current HabitItem
-	 * @return the Item in json (ready to send as POST)
-	 */
-	public abstract String getJSONString();
+	protected abstract HabitType getType();
 
 	/**
 	 * Creates a JSON String for this HabitItem using the basic information.<br>
