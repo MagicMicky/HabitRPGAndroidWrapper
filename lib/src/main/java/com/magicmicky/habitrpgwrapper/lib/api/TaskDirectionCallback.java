@@ -11,6 +11,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 /**
+ * Simple implementation for TaskDirection callback. When the result is the result for a taskDirection.
  * Created by MagicMicky on 12/06/2014.
  */
 public class TaskDirectionCallback implements Callback<TaskDirection> {

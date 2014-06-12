@@ -9,6 +9,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 /**
+ * Simple Status callback implementation.
  * Created by MagicMicky on 10/06/2014.
  */
 public class StatusCallback implements Callback<Status> {

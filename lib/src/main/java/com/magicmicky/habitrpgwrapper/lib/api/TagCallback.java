@@ -9,6 +9,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 /**
+ * Simple tag callback implementation. Used when the result is only a single tag.
  * Created by MagicMicky on 12/06/2014.
  */
 public class TagCallback implements Callback<Tag> {

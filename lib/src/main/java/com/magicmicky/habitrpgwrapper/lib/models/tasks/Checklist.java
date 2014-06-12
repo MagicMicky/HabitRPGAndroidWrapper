@@ -3,6 +3,10 @@ package com.magicmicky.habitrpgwrapper.lib.models.tasks;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Description of Checklist on HabitRPG
+ * Created by MagicMicky
+ */
 public abstract class Checklist extends HabitItem{
 	final private List<ChecklistItem> checklist;
 

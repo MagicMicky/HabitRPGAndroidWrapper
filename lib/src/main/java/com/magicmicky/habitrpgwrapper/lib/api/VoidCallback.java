@@ -7,6 +7,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 /**
+ * Simple void callback implementation.
  * Created by MagicMicky on 12/06/2014.
  */
 public class VoidCallback implements Callback<Void> {

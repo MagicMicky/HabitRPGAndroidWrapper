@@ -15,8 +15,9 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 /**
- * TODO : different gson interpreter so that we can test if the habititem is a reward or whatever.
- * Also: Tags
+ * TODO: Tags
+ * Simple implementation of a HabitItem callback, supposed to be called when the result is either a single
+ * to do, daily, habit or reward.
  * Created by MagicMicky on 10/06/2014.
  */
 public class HabitItemCallback<T extends HabitItem> implements Callback<T> {

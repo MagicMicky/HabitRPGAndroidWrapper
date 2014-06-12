@@ -11,6 +11,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 /**
+ * Simple callback implementation when the result is a list of tags.
  * Created by MagicMicky on 12/06/2014.
  */
 public class MultiTagsCallback implements Callback<List<Tag>> {

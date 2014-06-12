@@ -46,7 +46,7 @@ public interface ApiService {
 
 
     @POST("/user/tasks/{id}/{direction}")
-    void postTaskDirection(@Path("id") String id, @Path("direction") String direction, TaskDirectionCallback taskDirectionCallback);//+ weird callback with delta etc.
+    void postTaskDirection(@Path("id") String id, @Path("direction") String direction, TaskDirectionCallback taskDirectionCallback);
 
 
     @POST("/user/tasks")
@@ -70,19 +70,19 @@ public interface ApiService {
 
 
     @DELETE("/user/tasks/{id}")
-    void deleteTask(@Path("id") String id, Callback<Void> voidCallback);//test callback
+    void deleteTask(@Path("id") String id, Callback<Void> voidCallback);
 
 
     @POST("/user/tags")
-    void createTag(@Body Tag tag, Callback<List<Tag>> multiTagCallback);//Check Callback
+    void createTag(@Body Tag tag, Callback<List<Tag>> multiTagCallback);
 
 
     @PUT("/user/tags/{id}")
-    void updateTag(@Path("id") String id, @Body Tag tag, Callback<Tag> multiTagCallback);//callback
+    void updateTag(@Path("id") String id, @Body Tag tag, Callback<Tag> multiTagCallback);
 
 
     @DELETE("/user/tags/{id}")
-    void deleteTag(@Path("id") String id, Callback<Void> voidCallback);//Callback
+    void deleteTag(@Path("id") String id, Callback<Void> voidCallback);
 
 
 

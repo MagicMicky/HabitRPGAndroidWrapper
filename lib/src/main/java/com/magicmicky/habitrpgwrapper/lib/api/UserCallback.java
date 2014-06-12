@@ -10,6 +10,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 /**
+ * Simple implementation of a user callback.
  * Created by MagicMicky on 10/06/2014.
  */
 public class UserCallback implements Callback<HabitRPGUser> {
