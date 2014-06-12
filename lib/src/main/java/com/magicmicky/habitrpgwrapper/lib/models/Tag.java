@@ -4,16 +4,15 @@ package com.magicmicky.habitrpgwrapper.lib.models;
  * Created by MagicMicky on 16/03/14.
  */
 public class Tag {
-    String id, _id;
+    String id;
     String name;
 
     public Tag() {
-        this("","","");
+        this(null,null);
     }
 
-    public Tag(String id, String _id, String name) {
+    public Tag(String id, String name) {
         this.setId(id);
-        this.set_id(_id);
         this.setName(name);
     }
 
@@ -32,14 +31,6 @@ public class Tag {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String get_id() {
-        return _id;
-    }
-
-    public void set_id(String _id) {
-        this._id = _id;
     }
 
 }

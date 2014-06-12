@@ -2,11 +2,14 @@ package com.magicmicky.habitrpgwrapper.lib.api;
 
 import com.magicmicky.habitrpgwrapper.lib.models.HabitRPGUser;
 import com.magicmicky.habitrpgwrapper.lib.models.Status;
+import com.magicmicky.habitrpgwrapper.lib.models.Tag;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.Daily;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.Habit;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.HabitItem;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.Reward;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.ToDo;
+
+import java.util.List;
 
 import retrofit.Callback;
 import retrofit.http.Body;
@@ -57,14 +60,21 @@ public interface ApiService {
     void updateTask(@Path("id") String id, @Body Reward item, Callback<Reward> habitItemCallback);
 
     @DELETE("/user/tasks/{id}")
-    void deleteTask(@Path("id") String id, Callback<HabitItemCallback> habitItemCallback);//test callback
+    void deleteTask(@Path("id") String id, Callback<Void> voidCallback);//test callback
+
+    @POST("/user/tags")
+    void createTag(@Body Tag tag, Callback<List<Tag>> multiTagCallback);//Check Callback
+
+    @PUT("/user/tags/{id}")
+    void updateTag(@Path("id") String id, @Body Tag tag, Callback<List<Tag>> multiTagCallback);//callback
+
+    @DELETE("/user/tags/{id}")
+    void deleteTag(@Path("id") String id, Callback<Void> voidCallback);//Callback
+
 
 /*
     @GET("/content")
     void getContent();//Check Callback
-
-
-
 
     @POST("/user/sleep")
     void sleep(Callback<HabitRPGDataCallback> habitRPGDataCallbackCallback);//Check callback.
@@ -87,14 +97,6 @@ public interface ApiService {
     @POST("/user/inventory/hatch/{egg}/{hatchingPotion}")
     void hatch(@Path("egg") String egg, @Path("hatchingPotion") String potion);//Check Callback
 
-    @POST("/user/tags")
-    void createTag(@Body Tag tag);//Check Callback
-
-    @PUT("/user/tags/{id}")
-    void updateTag(@Path("id") String id, @Body Tag tag);//callback
-
-    @DELETE("/user/tags/{id}")
-    void deleteTag(@Path("id") String id);//Callback
 
 
     @GET("/user/tasks/{id}")
