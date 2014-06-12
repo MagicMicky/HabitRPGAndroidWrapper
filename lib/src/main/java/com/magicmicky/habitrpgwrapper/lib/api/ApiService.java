@@ -35,10 +35,6 @@ public interface ApiService {
     void revive(Callback<HabitRPGUser> habitRPGUserCallback);
 
 
-    @GET("/user/tasks/")
-    void getTasks(Callback<HabitItemCallback> habitItemCallback);
-
-
     @GET("/user/tasks/{id}")
     void getHabit(@Path("id") String id, Callback<Habit> habitItemCallback);
     @GET("/user/tasks/{id}")
