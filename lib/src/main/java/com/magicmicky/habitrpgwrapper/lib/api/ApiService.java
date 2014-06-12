@@ -26,13 +26,14 @@ public interface ApiService {
     @GET("/status")
     void getStatus(Callback<Status> statusCallback);
 
+
     @GET("/user/")
     void getUser(Callback<HabitRPGUser> habitRPGUserCallback);
 
 
-
     @POST("/user/revive")
     void revive(Callback<HabitRPGUser> habitRPGUserCallback);
+
 
     @GET("/user/tasks/")
     void getTasks(Callback<HabitItemCallback> habitItemCallback);
@@ -51,6 +52,7 @@ public interface ApiService {
     @POST("/user/tasks/{id}/{direction}")
     void postTaskDirection(@Path("id") String id, @Path("direction") String direction, TaskDirectionCallback taskDirectionCallback);//+ weird callback with delta etc.
 
+
     @POST("/user/tasks")
     void createItem(@Body Habit item, Callback<Habit> habitItemCallback);
     @POST("/user/tasks")
@@ -59,6 +61,7 @@ public interface ApiService {
     void createItem(@Body ToDo item, Callback<ToDo> habitItemCallback);
     @POST("/user/tasks")
     void createItem(@Body Reward item, Callback<Reward> habitItemCallback);
+
 
     @PUT("/user/tasks/{id}")
     void updateTask(@Path("id") String id, @Body Habit item, Callback<Habit> habitItemCallback);
@@ -69,17 +72,22 @@ public interface ApiService {
     @PUT("/user/tasks/{id}")
     void updateTask(@Path("id") String id, @Body Reward item, Callback<Reward> habitItemCallback);
 
+
     @DELETE("/user/tasks/{id}")
     void deleteTask(@Path("id") String id, Callback<Void> voidCallback);//test callback
+
 
     @POST("/user/tags")
     void createTag(@Body Tag tag, Callback<List<Tag>> multiTagCallback);//Check Callback
 
+
     @PUT("/user/tags/{id}")
     void updateTag(@Path("id") String id, @Body Tag tag, Callback<Tag> multiTagCallback);//callback
 
+
     @DELETE("/user/tags/{id}")
     void deleteTag(@Path("id") String id, Callback<Void> voidCallback);//Callback
+
 
 
 /*
