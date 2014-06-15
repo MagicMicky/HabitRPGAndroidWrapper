@@ -17,7 +17,7 @@ Add this library to your project's build.gradle dependencies.
 ```
     dependencies {
         //...
-        compile 'com.magicmicky.habitrpgwrapper.lib:lib:+'
+        compile 'com.magicmicky.habitrpgwrapper:lib:+'
     }
 ```
 
