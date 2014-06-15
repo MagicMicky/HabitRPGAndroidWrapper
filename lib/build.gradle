@@ -24,3 +24,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:19.+'
     compile 'com.squareup.retrofit:retrofit:1.6.0'
 }
+
+apply from: 'https://raw.githubusercontent.com/hotchemi/gradle-mvn-push/master/gradle-mvn-push.gradle'
+

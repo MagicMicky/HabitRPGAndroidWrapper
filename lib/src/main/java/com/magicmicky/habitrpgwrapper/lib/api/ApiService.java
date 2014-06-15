@@ -3,6 +3,8 @@ package com.magicmicky.habitrpgwrapper.lib.api;
 import com.magicmicky.habitrpgwrapper.lib.models.HabitRPGUser;
 import com.magicmicky.habitrpgwrapper.lib.models.Status;
 import com.magicmicky.habitrpgwrapper.lib.models.Tag;
+import com.magicmicky.habitrpgwrapper.lib.models.TaskDirection;
+import com.magicmicky.habitrpgwrapper.lib.models.TaskDirectionData;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.Daily;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.Habit;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.HabitItem;
@@ -31,8 +33,8 @@ public interface ApiService {
     void getUser(Callback<HabitRPGUser> habitRPGUserCallback);
 
 
-    @POST("/user/revive")
-    void revive(Callback<HabitRPGUser> habitRPGUserCallback);
+   // @POST("/user/revive")
+   // void revive(Callback<HabitRPGUser> habitRPGUserCallback);
 
 
     @GET("/user/tasks/{id}")
@@ -46,7 +48,7 @@ public interface ApiService {
 
 
     @POST("/user/tasks/{id}/{direction}")
-    void postTaskDirection(@Path("id") String id, @Path("direction") String direction, TaskDirectionCallback taskDirectionCallback);
+    void postTaskDirection(@Path("id") String id, @Path("direction") String direction, Callback<TaskDirectionData> taskDirectionCallback);
 
 
     @POST("/user/tasks")
