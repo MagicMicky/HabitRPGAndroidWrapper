@@ -1,6 +1,7 @@
 package com.magicmicky.habitrpgwrapper.lib;
 
 import com.magicmicky.habitrpgwrapper.lib.api.ApiService;
+import com.magicmicky.habitrpgwrapper.lib.api.Server;
 import com.magicmicky.habitrpgwrapper.lib.models.HabitRPGUser;
 import com.magicmicky.habitrpgwrapper.lib.models.Status;
 import com.magicmicky.habitrpgwrapper.lib.models.Tag;
@@ -24,7 +25,7 @@ import retrofit.RestAdapter;
 public class HabitRPGInteractor {
 
     private ApiService apiService;
-    public HabitRPGInteractor(final String apiKey, final String userKey) {
+    public HabitRPGInteractor(final String apiKey, final String userKey, final Server server) {
         RequestInterceptor requestInterceptor = new RequestInterceptor() {
             @Override
             public void intercept(RequestInterceptor.RequestFacade request) {
@@ -32,11 +33,12 @@ public class HabitRPGInteractor {
                 request.addHeader("x-api-user",userKey);
             }
         };
-
-        RestAdapter adapter = new RestAdapter.Builder().setEndpoint("https://habitrpg.com:443/api/v2/").setRequestInterceptor(requestInterceptor).build();
+        RestAdapter adapter = new RestAdapter.Builder().setEndpoint(server.toString()).setRequestInterceptor(requestInterceptor).build();
         this.apiService  = adapter.create(ApiService.class);
     }
-
+    public HabitRPGInteractor(final String apiKey, final String userKey) {
+        this(apiKey, userKey, Server.NORMAL);
+    }
     /**
      * Retrieve the Status of habitrpg
      * @see com.magicmicky.habitrpgwrapper.lib.models.Status
