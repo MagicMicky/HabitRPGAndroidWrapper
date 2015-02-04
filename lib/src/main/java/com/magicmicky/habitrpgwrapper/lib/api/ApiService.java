@@ -5,6 +5,8 @@ import com.magicmicky.habitrpgwrapper.lib.models.Status;
 import com.magicmicky.habitrpgwrapper.lib.models.Tag;
 import com.magicmicky.habitrpgwrapper.lib.models.TaskDirection;
 import com.magicmicky.habitrpgwrapper.lib.models.TaskDirectionData;
+import com.magicmicky.habitrpgwrapper.lib.models.UserAuth;
+import com.magicmicky.habitrpgwrapper.lib.models.UserAuthResponse;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.Daily;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.Habit;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.HabitItem;
@@ -86,8 +88,8 @@ public interface ApiService {
     @DELETE("/user/tags/{id}")
     void deleteTag(@Path("id") String id, Callback<Void> voidCallback);
 
-
-
+    @POST("/user/auth/local")
+    void connectLocal(@Body UserAuth auth, Callback<UserAuthResponse> callback);
 /*
     @GET("/content")
     void getContent();//Check Callback

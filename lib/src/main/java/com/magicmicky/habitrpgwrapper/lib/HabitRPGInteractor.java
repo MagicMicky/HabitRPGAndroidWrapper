@@ -7,6 +7,8 @@ import com.magicmicky.habitrpgwrapper.lib.models.Status;
 import com.magicmicky.habitrpgwrapper.lib.models.Tag;
 import com.magicmicky.habitrpgwrapper.lib.models.TaskDirection;
 import com.magicmicky.habitrpgwrapper.lib.models.TaskDirectionData;
+import com.magicmicky.habitrpgwrapper.lib.models.UserAuth;
+import com.magicmicky.habitrpgwrapper.lib.models.UserAuthResponse;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.Daily;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.Habit;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.HabitItem;
@@ -222,6 +224,15 @@ public class HabitRPGInteractor {
      */
     public void deleteTag(String tagId, Callback<Void> voidCallback) {
         this.apiService.deleteTag(tagId, voidCallback);
+    }
+
+    /**
+     * Connects a user
+     * @param authData          The username & password of the user
+     * @param responseCallback  The callback called once the user is connected
+     */
+    public void connectUser(UserAuth authData, Callback<UserAuthResponse> responseCallback) {
+        this.apiService.connectLocal(authData,responseCallback);
     }
 
 }

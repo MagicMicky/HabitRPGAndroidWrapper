@@ -157,7 +157,7 @@ public class Preferences {
         this.hair = hair;
     }
 
-    private class Hair{
+    public class Hair{
         private int mustache,beard, bangs,base;
         private String color;
         private Hair() {

@@ -72,7 +72,7 @@ public class Party {
         this.order = order;
     }
 
-    private class Quest {
+    public class Quest {
         private String key;
         private Progress progress;
 
