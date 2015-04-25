@@ -18,27 +18,27 @@ dependencies {
     compile 'com.squareup.retrofit:retrofit:1.6.0'
 }
 //We want to upload our stuff to local maven
-apply plugin: 'maven'
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository url: 'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath
-            }
-        }
-}
+//apply plugin: 'maven'
+//uploadArchives {
+//    repositories {
+//        mavenDeployer {
+//            repository url: 'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath
+//            }
+//        }
+//}
 
 //Installing uses uploadArchives
-task install(dependsOn: uploadArchives)
+//task install(dependsOn: uploadArchives)
 
 //We export a jar of our sources using androidSourcesJar
-task androidSourcesJar(type: Jar) {
-    classifier = 'sources'
-    from android.sourceSets.main.java.sourceFiles
-}
+//task androidSourcesJar(type: Jar) {
+//    classifier = 'sources'
+//    from android.sourceSets.main.java.sourceFiles
+//}
 //Defining an artifact lets us export it while using `gradlew install`
-artifacts {
-    archives androidSourcesJar
-}
+//artifacts {
+//    archives androidSourcesJar
+//}
 
-//apply from: 'https://raw.githubusercontent.com/hotchemi/gradle-mvn-push/master/gradle-mvn-push.gradle'
+apply from: 'https://raw.githubusercontent.com/hotchemi/gradle-mvn-push/master/gradle-mvn-push.gradle'
 

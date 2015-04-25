@@ -12,6 +12,7 @@ import java.util.List;
  */
 public abstract class HabitItem {
     private String _id;
+    private String id;
 	private String notes;
 	private Float priority;
 	private String text;
@@ -33,7 +34,7 @@ public abstract class HabitItem {
 		this.setText(text);
 		this.setValue(value);
 		this.tagsId=new ArrayList<String>();
-        this._id = id;
+        this.id = id;
 
 	}
 	public HabitItem() {
@@ -43,13 +44,13 @@ public abstract class HabitItem {
 	 * @return the id
 	 */
 	public String getId() {
-		return _id;
+		return id;
 	}
 	/**
 	 * @param id the id to set
 	 */
 	public void setId(String id) {
-		this._id = id;
+		this.id = id;
 	}
 	/**
 	 * @return the notes
