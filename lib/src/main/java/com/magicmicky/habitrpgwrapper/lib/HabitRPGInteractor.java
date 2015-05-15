@@ -1,7 +1,10 @@
 package com.magicmicky.habitrpgwrapper.lib;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.magicmicky.habitrpgwrapper.lib.api.ApiService;
 import com.magicmicky.habitrpgwrapper.lib.api.Server;
+import com.magicmicky.habitrpgwrapper.lib.api.TypeAdapter.TagsAdapter;
 import com.magicmicky.habitrpgwrapper.lib.models.HabitRPGUser;
 import com.magicmicky.habitrpgwrapper.lib.models.Status;
 import com.magicmicky.habitrpgwrapper.lib.models.Tag;
@@ -13,6 +16,7 @@ import com.magicmicky.habitrpgwrapper.lib.models.tasks.Daily;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.Habit;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.HabitItem;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.Reward;
+import com.magicmicky.habitrpgwrapper.lib.models.tasks.Tags;
 import com.magicmicky.habitrpgwrapper.lib.models.tasks.ToDo;
 
 import java.util.List;
@@ -20,6 +24,7 @@ import java.util.List;
 import retrofit.Callback;
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
+import retrofit.converter.GsonConverter;
 
 /**
  * Created by MagicMicky on 13/06/2014.
@@ -35,7 +40,13 @@ public class HabitRPGInteractor {
                 request.addHeader("x-api-user",userKey);
             }
         };
-        RestAdapter adapter = new RestAdapter.Builder().setEndpoint(server.toString()).setRequestInterceptor(requestInterceptor).build();
+        Gson gson = new GsonBuilder().registerTypeAdapter(Tags.class, new TagsAdapter().nullSafe()).create();
+
+        RestAdapter adapter = new RestAdapter.Builder()
+                .setEndpoint(server.toString())
+                .setRequestInterceptor(requestInterceptor)
+                .setConverter(new GsonConverter(gson))
+                .build();
         this.apiService  = adapter.create(ApiService.class);
     }
     public HabitRPGInteractor(final String apiKey, final String userKey) {

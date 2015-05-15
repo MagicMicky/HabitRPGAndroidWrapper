@@ -2,7 +2,6 @@ package com.magicmicky.habitrpgwrapper.lib.models.tasks;
 
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,7 +17,7 @@ public abstract class HabitItem {
 	private String text;
 	private Double value;
 	private String attribute;
-	private List<String> tagsId;
+	private Tags tags;
 	/**
 	 * Create a new HabitItem from what is necessary
 	 * @param id the id of the habit
@@ -33,7 +32,7 @@ public abstract class HabitItem {
 		this.setPriority(priority);
 		this.setText(text);
 		this.setValue(value);
-		this.tagsId=new ArrayList<String>();
+		this.tags=new Tags();
         this.id = id;
 
 	}
@@ -110,27 +109,25 @@ public abstract class HabitItem {
     }
 	
 	/**
-	 * @return the tagsId
+	 * @return the tags
 	 */
-	public List<String> getTagsId() {
-		return tagsId;
+	public List<String> getTags() {
+		return tags.getTags();
 	}
 	/**
-	 * @param tagsId the tagsId to set
+	 * @param tags the tagsId to set
 	 */
-	public void setTagsId(List<String> tagsId) {
-		this.tagsId = tagsId;
+	public void setTags(List<String> tags) {
+		this.tags.setTags(tags);
 	}
 	
 	public boolean isTagged(List<String> tags) {
-		if(this.getTagsId()==null) {
+		if(this.getTags()==null) {
 			System.out.println("getTags is null!!!");
 		}
-		if(this.getTagsId() != null && this.getTagsId().containsAll(tags))
-			return true;
-		
-		return false;
-	}
+        return (this.getTags() != null && this.getTags().size() != 0);
+
+    }
 	/**
 	 * Returns a string of the type of the HabitItem
 	 * @return the string of the Item type
@@ -154,11 +151,11 @@ public abstract class HabitItem {
 			if(this.getNotes()!=null && !this.getNotes().contentEquals(""))
 				json.append("\"notes\":").append(JSONObject.quote(this.getNotes())).append("," );
 			json.append("\"value\":").append(this.getValue()).append(",");
-			if(this.getTagsId()!=null && this.getTagsId().size()!=0) {
+			if(this.getTags()!=null) { //TODO: && this.getTags().size()!=0
 				json.append("\"tags\":{");
-				for(String tagId : this.getTagsId()) {
+				/*for(String tagId : this.getTags()) {
 					json.append("").append(JSONObject.quote(tagId)).append(":").append("true").append(",");
-				}
+				}*/
 				json.deleteCharAt(json.length()-1);
 				json.append("},");
 			}
