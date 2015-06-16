@@ -17,15 +17,22 @@ import java.util.List;
 /**
  * Created by magicmicky on 15/05/15.
  */
-public class TagsAdapter extends TypeAdapter {
+public class TagsAdapter extends TypeAdapter<Tags>{
 
     @Override
-    public void write(JsonWriter out, Object value) throws IOException {
-        Log.d("OMG","omg");
+    public void write(JsonWriter out, Tags value) throws IOException {
+        List<String> list = value.getTags();
+        out.beginObject();
+        for(String s : list) {
+            out.name(s);
+            out.value(true);
+        }
+        out.endObject();
+        Log.d("TagsAdapter", "Finished tagging");
     }
 
     @Override
-    public Object read(JsonReader in) throws IOException {
+    public Tags read(JsonReader in) throws IOException {
         List<String> tags = new ArrayList<>();
         boolean isClosed=false;
         do {
